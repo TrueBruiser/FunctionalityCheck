@@ -1,5 +1,9 @@
 # PowerShell script to automatically search, download, and install Windows updates
 
+# Temporarily bypass the execution policy for this session
+# Mainly intended to get around user dependancies with fresh installations of Windows
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
 # Function to search for updates
 function Search-Updates {
     $UpdateSession = New-Object -ComObject Microsoft.Update.Session
