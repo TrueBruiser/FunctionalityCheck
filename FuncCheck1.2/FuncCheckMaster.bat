@@ -87,7 +87,17 @@ timeout /t 3
 echo Is there anything else that needs done with the machine? [Y/N]
 echo Press [S] to shutdown the computer ending the Functionality Check of the device
 ::as of 1/1/24 there are no further options to test devices, however I do plan on adding more in the future.
-set /p UserInput=
-if /I "%UserInput%"=="Y" exit
-if /I "%UserInput%"=="S" shutdown /s /f /t 0
-if /I "%UserInput%"=="N" exit
+
+:: Set a timeout of 60 seconds (1 minute)
+choice /C YNS /N /T 60 /D N /M "Select an option (Y/N/S): "
+
+::/C YNS: Specifies the valid input keys (Y, N, and S).
+::/N: Hides the list of choices in the prompt.
+::/T 60: Sets the timeout to 60 seconds.
+::/D N: Sets the default choice to 'N' if no key is pressed within the timeout period.
+::/M "Select an option (Y/N/S): ": Displays a message to the user.
+
+:: Check the selected option
+if errorlevel 3 shutdown /s /f /t 0
+if errorlevel 2 exit
+if errorlevel 1 exit
