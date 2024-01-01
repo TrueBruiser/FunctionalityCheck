@@ -63,6 +63,8 @@ echo Running System Test and Health script...
 call SysTestAndHealth.bat
 goto screen_test_input
 
+timeout /t 10
+
 :screen_test_input
 echo Do you want to run the Screen Test script? [Y/N/E]
 set /p UserInput=
