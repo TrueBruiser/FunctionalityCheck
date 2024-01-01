@@ -64,5 +64,5 @@ $SearchResult = $UpdateSearcher.Search("IsInstalled=0 and RebootRequired=1")
 if ($SearchResult.Updates.Count -gt 0) {
     Write-Host "A system restart is required to complete the update process."
     # Uncomment the following line if you want the script to initiate a restart
-    # Restart-Computer
+     Restart-Computer
 }
