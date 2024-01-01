@@ -48,6 +48,6 @@ goto screenTest
 
 :end_script
 echo Function Check Master Script Completed.
-pause
-exit
+call end_script
+echo Ending script in 10 seconds, type shutdown /a to abort this process.
 
