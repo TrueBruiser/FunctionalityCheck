@@ -47,6 +47,8 @@ if %errorlevel% neq 0 (
 )
 goto sys_test_input
 
+timeout /t 3
+
 :sys_test_input
 echo Do you want to run the System Test and Health script? [Y/N/E]
 set /p UserInput=
@@ -75,9 +77,11 @@ echo Running Screen Test...
 call ScreenTest.bat
 goto end_script
 
+echo Function Check Master Script Completed.
+timeout /t 3
+
 :end_script
 :: Stage 4
-echo Function Check Master Script Completed.
 echo Is there anything else that needs done with the machine? [Y/N]
 echo Press [S] to shutdown the computer ending the Functionality Check of the device
 ::as of 1/1/24 there are no further options to test devices, however I do plan on adding more in the future.
