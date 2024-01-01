@@ -45,9 +45,8 @@ if %errorlevel% neq 0 (
         echo Failed to run Windows Update script. Proceeding to next step.
     )
 )
-goto sys_test_input
-
 timeout /t 3
+goto sys_test_input
 
 :sys_test_input
 echo Do you want to run the System Test and Health script? [Y/N/E]
@@ -61,9 +60,8 @@ goto sys_test_input
 :: Stage 2
 echo Running System Test and Health script...
 call SysTestAndHealth.bat
+pause
 goto screen_test_input
-
-timeout /t 10
 
 :screen_test_input
 echo Do you want to run the Screen Test script? [Y/N/E]
