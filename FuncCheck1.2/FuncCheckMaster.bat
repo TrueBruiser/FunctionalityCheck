@@ -40,7 +40,7 @@ exit
 
 :: Run the PowerShell script for Windows Update
 echo Running Windows Update script...
-start /b powershell -NoProfile -File "WinUpdate.ps1"
+start /b powershell -ExecutionPolicy Bypass -File "WinUpdate.ps1"
 call :ShowProgress
 echo.
 echo Windows Update script completed.

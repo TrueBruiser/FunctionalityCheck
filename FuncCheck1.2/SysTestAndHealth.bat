@@ -23,7 +23,11 @@ DISM /Online /Cleanup-Image /CheckHealth
 
 :: Fetch Device Serial Number
 echo Fetching device's serial number...
-wmic bios get serialnumber
+FOR /F "tokens=2 delims==" %%I IN ('wmic bios get serialnumber /value') DO set "serialNumber=%%I"
+
+:: Call the PowerShell script to generate and print the barcode
+powershell -ExecutionPolicy Bypass -File "GenerateBarcode.ps1" -serialNumber %serialNumber%
+
 
 :: Hardware Checks
 echo.
