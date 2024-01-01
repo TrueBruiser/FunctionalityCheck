@@ -1,15 +1,37 @@
 @echo off
 cls
 
+echo.
+echo System Functionality Check 
+echo Created by TrueBruiser 
+echo find the repository at https://github.com/TrueBruiser
+echo aka Happy Gilmore 1635270
+echo.
+echo Last updated (1/1/24) 
+echo This script and any other scripts run throughout this process are the intellectual property of TrueBruiser. For any additional addons, reccomendations, or bug reporting/errors, create a request on my github (posted Above). 
+echo.
+echo.
+echo.
+
+timeout /t 5
+
 echo Starting Function Check Master Script
 
-:winupdate_input
-echo Do you want to run the Windows Update script? [Y/N/E]
-set /p UserInput=
-if /I "%UserInput%"=="Y" goto run_winupdate
-if /I "%UserInput%"=="N" goto sys_test_input
-if /I "%UserInput%"=="E" exit
-goto winupdate_input
+:: Check Windows Update Status
+echo Checking Windows Update Status...
+for /f "delims=" %%i in ('PowerShell -Command "(Get-HotFix | Sort-Object InstalledOn -Descending | Select-Object -First 1).InstalledOn"') do set "LastUpdate=%%i"
+
+:: Compare with Current Date
+for /f "delims=" %%i in ('PowerShell -Command "Get-Date -Format 'MM/dd/yyyy'"') do set "CurrentDate=%%i"
+
+:: Decide whether to run updates
+if "%LastUpdate%" neq "%CurrentDate%" (
+    echo Windows updates were not installed today. Running update script...
+    goto run_winupdate
+) else (
+    echo Windows updates are up to date. Skipping update script...
+    goto sys_test_input
+)
 
 :run_winupdate
 :: Run the PowerShell script for Windows Update
