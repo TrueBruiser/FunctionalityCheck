@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dead Pixel Test</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  .color-screen {
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+
+<div id="colorScreen" class="color-screen"></div>
+
+<script>
+  const colors = ["black", "white", "red", "green", "blue", "grey"];
+  let currentColorIndex = 0;
+
+  function changeColor() {
+    document.getElementById("colorScreen").style.backgroundColor = colors[currentColorIndex];
+    currentColorIndex = (currentColorIndex + 1) % colors.length;
+  }
+
+  document.body.onkeyup = function(e) {
+    if (e.key === ' ') { // Space bar
+      changeColor();
+    }
+    if (e.key.toLowerCase() === 'q') { // Key 'Q'
+      window.close(); // This will close the current browser tab or window
+    }
+  }
+</script>
+
+</body>
+</html>
