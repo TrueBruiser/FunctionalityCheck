@@ -1,19 +1,46 @@
 @echo off
 cls
 
+
+echo.
+echo.
+echo ===============================================================================================                                                                                             
+echo ===============================================================================================                    
+echo " $$$$$$$$\                                   $$$$$$\  $$\                           $$\       " 
+echo " $$  _____|                                 $$  __$$\ $$ |                          $$ |      "
+echo " $$ |   $$\   $$\ $$$$$$$\   $$$$$$$\       $$ /  \__|$$$$$$$\   $$$$$$\   $$$$$$$\ $$ |  $$\ "
+echo " $$$$$\ $$ |  $$ |$$  __$$\ $$  _____|      $$ |      $$  __$$\ $$  __$$\ $$  _____|$$ | $$  |"
+echo " $$  __|$$ |  $$ |$$ |  $$ |$$ /            $$ |      $$ |  $$ |$$$$$$$$ | $$ /      $$$$$$  /" 
+echo " $$ |   $$ |  $$ |$$ |  $$ |$$ |            $$ |  $$\ $$ |  $$ |$$   ____|$$ |      $$  _$$<  "
+echo " $$ |   \$$$$$$  |$$ |  $$ |\$$$$$$$\       \$$$$$$  |$$ |  $$ |\$$$$$$$\ \$$$$$$$\ $$ | \$$\ "
+echo " \__|    \______/ \__|  \__| \_______|       \______/ \__|  \__| \_______| \_______|\__|  \__|"
+echo ===============================================================================================                                                                                             
+echo ===============================================================================================                                                                                             
+echo.
+echo.
 echo.
 echo System Functionality Check 
+echo.
 echo Created by TrueBruiser 
 echo find the repository at https://github.com/TrueBruiser
 echo aka Happy Gilmore 1635270
 echo.
 echo Last updated (1/1/24) 
+echo.
 echo This script and any other scripts run throughout this process are the intellectual property of TrueBruiser. For any additional addons, reccomendations, or bug reporting/errors, create a request on my github (posted Above). 
 echo.
 echo.
 echo.
 
-timeout /t 5
+timeout /t 15
+
+
+
+
+
+
+
+
 
 echo Starting Function Check Master Script
 
@@ -37,15 +64,16 @@ if "%LastUpdate%" neq "%CurrentDate%" (
 :: Run the PowerShell script for Windows Update
 :: Stage 1 
 echo Running Windows Update script...
-PowerShell -Command "Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process; & {./WinUpdate.ps1}"
+PowerShell -Command "Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process; & .\WinUpdate.ps1"
 if %errorlevel% neq 0 (
     echo Error encountered, attempting to run with bypass...
-    PowerShell -ExecutionPolicy Bypass -File "./WinUpdate.ps1"
+    PowerShell -ExecutionPolicy Bypass -File ".\WinUpdate.ps1"
     if %errorlevel% neq 0 (
         echo Failed to run Windows Update script. Proceeding to next step.
     )
 )
-timeout /t 3
+
+timeout /t 5
 goto sys_test_input
 
 :sys_test_input
@@ -60,7 +88,7 @@ goto sys_test_input
 :: Stage 2
 echo Running System Test and Health script...
 call SysTestAndHealth.bat
-pause
+timeout /t 15
 goto screen_test_input
 
 :screen_test_input
@@ -85,6 +113,8 @@ timeout /t 3
 echo Is there anything else that needs done with the machine? [Y/N]
 echo Press [S] to shutdown the computer ending the Functionality Check of the device
 ::as of 1/1/24 there are no further options to test devices, however I do plan on adding more in the future.
+
+echo If there is no input from you, this script will automatically exit in 1 minute.
 
 :: Set a timeout of 60 seconds (1 minute)
 choice /C YNS /N /T 60 /D N /M "Select an option (Y/N/S): "
