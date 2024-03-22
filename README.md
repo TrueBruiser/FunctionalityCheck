@@ -1,3 +1,6 @@
+Latest Version: 2.3.1 Released 3/22/24
+
+
 This is my first project aiming to ensure the health of both hardware and software is optimal before being resold. 
 
 I have plans to add more to this script in the future.
