@@ -11,6 +11,10 @@ The master script is what calls upon all the other created tools in either html,
 
 The Update powershell script is one that must be run with a internet connection. This script is similar to a "sudo apt update && sudo apt upgrade -y" on a linux system. This works in the exact same mannor the Windows GUI using tools that are mostly baked into a windows system. This means grabbing the necessary updates to ensure all of the device is usable, and the image is up to date for the future customer. It is reccommended the system be restarted after running this script to install any/all updates.
 
+The next script that runs is a Microsoft Defender scan (both quick and deep) which allows the user to ensure there are no known viruses, malware, or other rootkits stored within the system. Hitting 'Y' when the script asks if you would like to run the script will start the next script. The script will as you if you want to preform a quick scan 'N' or a deep scan 'Y' on the system. Should the user hit Y to run a deep scan, a task will be created to list any found malicious scripts found on the system after the sytem starts up. The quick scan is no diffferent from any other malicious scan and will output the malicious scripts found within the termninal. 
+NOTE: N will run a MS Defender Quick Scan
+      Y will run a Deep MS Defender Scan and will restart the system
+
 The System Health Check runs other tools baked into windows from the beginning, ensuring the Windows image is healthy, storage and other hardware is working as it should, the storage is as open as possible, amongst other maitenance for both the Windows Image and the hardware itself. 
 
 Finally, The Screen Test runs a basic test to ensure there are no dead pixels along with making sure there is no burn in on oled screens. First opens a HTML script that can filter through different colors including red,green,blue,white,black, and grey. After this there is a long list of songs and knock off movies to hopefully get some smiles. 
