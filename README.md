@@ -24,4 +24,4 @@ To exit the script press the key 'Q'
 Throughout the entire script, pressing the 'E' key will exit the script
 At the end of the script, the 'S' key will shutdown the system immediatley after hitting enter
 
-As of 1/1/24 there are plans to continue to add to this for a func check on a device. However I do not have very much to add at the moment but will continue to update this in the future. 
+As of 3/22/2024 there are plans to continue to add to this for a func check on a device. However I do not have very much to add at the moment but will continue to update this in the future. 
